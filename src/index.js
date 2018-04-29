@@ -4,4 +4,7 @@ import ReactDOM, { render } from 'react-dom';
 import Counter from './components/counter';
 import Todo from './components/todo';
 
-render(<Todo></Todo>,window.root);
+render(<div>
+    <Todo></Todo>
+    <Counter></Counter>
+</div>,window.root);

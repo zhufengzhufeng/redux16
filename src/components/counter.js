@@ -10,11 +10,11 @@ import actions from '../store/actions/counter';
 export default class Counter extends Component {
     constructor() {
         super();
-        this.state = { number: store.getState().number }
+        this.state = { number: store.getState().c.number }
     }
     componentDidMount() {
         this.unsub = store.subscribe(() => {
-            this.setState({ number: store.getState().number })
+            this.setState({ number: store.getState().c.number })
         });
     }
     componentWillUnmount() {

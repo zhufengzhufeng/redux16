@@ -4,11 +4,11 @@ import actions from '../store/actions/todo';
 export default class Todo extends Component {
     constructor() {
         super();
-        this.state = {todos:store.getState().todos}
+        this.state = {todos:store.getState().t.todos}
     }
     componentDidMount(){
         this.unsub = store.subscribe(()=>{
-            this.setState({ todos: store.getState().todos })
+            this.setState({ todos: store.getState().t.todos })
         })
     }
     componentWillUnmount(){
