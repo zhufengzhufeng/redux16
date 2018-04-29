@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
-import store from '../store';
 import actions from '../store/actions/counter';
-// actionCreator 创建动作的
-// 一个项目里 一般会有一个store的文件夹 专门管理redux的
-// actions 放actionCreator的
-// reducers 放reducer的
-// action-types 专门放常量的
-// index 创建容器
-export default class Counter extends Component {
+import {connect} from 'react-redux';
+// connect方法是实现redux和组件的连接
+class Counter extends Component {
     constructor() {
         super();
-        this.state = { number: store.getState().c.number }
-    }
-    componentDidMount() {
-        this.unsub = store.subscribe(() => {
-            this.setState({ number: store.getState().c.number })
-        });
-    }
-    componentWillUnmount() {
-        this.unsub();
     }
     render() {
         return <div>
-            计数器 {this.state.number}
+            计数器 {this.props.n}
             <button onClick={() => {
-                store.dispatch(actions.add(2))
+                this.props.add(2)
             }}>+</button>
             <button onClick={() => {
-                store.dispatch(actions.minus(1));
+              this.props.minus(1);
             }}>-</button>
         </div>
     }
 }
+// connect方法调用后返回的是新组件
+// store.getState().c.number
+// 将状态 返回值作为属性
+let mapStateToProps = (state)=>{ // store.getState()
+    return {n:state.c.number}
+}
+// 将dispatch方法 返回值作为属性
+let mapDispatchToProps = (dispatch) =>{ // store.dispatch
+    return {
+        add(n){dispatch(actions.add(n))},
+        minus(n){dispatch(actions.minus(n))}
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Counter);
