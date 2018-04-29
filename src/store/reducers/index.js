@@ -1,8 +1,5 @@
-import counter from './counter';
-import todo from './todo';
-import {combineReducers} from '../../redux'
-let reducer = combineReducers({
-    c: counter,
-    t: todo
+import {combineReducers} from 'redux';
+import cart from './cart';
+export default combineReducers({
+    cart
 });
-export default reducer

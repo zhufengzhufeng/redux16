@@ -1,6 +1,6 @@
-// 创建store
-import { createStore } from '../redux';
-import reducer from './reducers'
+import {createStore} from 'redux';
+import reducer from './reducers';
+// 创建容器
 let store = createStore(reducer);
-window.store = store;// 将store作为全局属性
+window.store = store;
 export default store;
