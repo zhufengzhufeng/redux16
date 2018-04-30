@@ -7,7 +7,7 @@ function counter(state = initState, action) {
             // reducer必须返回新的状态 才能使视图更新
             return state.update('number',(value)=>value+action.count)
         case types.DECREMENT:
-            return state.update('number', (value) => value - action.count)
+            return state.update('number', (value) => value - action.payload.count)
     }
     return state;
 }
