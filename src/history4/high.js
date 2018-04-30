@@ -1,6 +1,5 @@
 // let 新组件 = connect()(旧的组件) 
 import React from 'react';
-
 let high = (key) => (Component)=>{
     return class HighOrderComponent extends React.Component{
         constructor() {
@@ -16,5 +15,5 @@ let high = (key) => (Component)=>{
         }
     }
 }
-export default high
+export default high;
 

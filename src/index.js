@@ -1,13 +1,24 @@
-// 高阶组件 组件返回组件
-// 高阶函数
+import React from 'react';
+import {render} from 'react-dom';
+import Counter from './components/counter'
+import { Provider } from "react-redux";
+import store from './store'
+render(<Provider store={store}>
+    <React.Fragment>
+        <Counter></Counter>
+    </React.Fragment>
+</Provider> ,window.root)
 
-// 两个输入框 都需要去本地的localStorage取值
+// redux 
+// store 容器 一个应用里只有一个 一个应该里只有一个状态
+// reducer 多个reducer 合并reducer combineReducers
+// dispatch redux提供的方法
+// action 要求必须有type actionCreator 
 
-import React,{Component} from 'react'
-import {render} from 'react-dom'
-import Username from './username';
-import Password from './password'
-render(<div>
-    <Username></Username>
-    <Password></Password>
-</div>,window.root)
+// react-redux 
+// Provider 提供一个store
+// connect 去拿到store store.getStat() store.dipatch
+
+
+// 计数器
+// 增加 减少
