@@ -1,12 +1,13 @@
 import * as types from '../action-types';
-function counter(state={number:0},action) {
+import {fromJS} from 'immutable';
+let initState = fromJS({ number: 0 });
+function counter(state = initState, action) {
     switch (action.type) {
         case types.INCREMENT:
             // reducer必须返回新的状态 才能使视图更新
-           
-            return { number: state.number + action.count };
+            return state.update('number',(value)=>value+action.count)
         case types.DECREMENT:
-            return {number:state.number-action.count};
+            return state.update('number', (value) => value - action.count)
     }
     return state;
 }

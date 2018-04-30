@@ -1,5 +1,6 @@
 // {Provider,connect}
 import React from 'react';
+import {bindActionCreators} from 'redux';
 // Provider有一个属性 是store
 let Context = React.createContext();
 class Provider extends React.Component {
@@ -34,7 +35,13 @@ let connect = (mapStateToProps, mapDispatchToProps) => (Component) => {
                             this.unsub();
                         }
                         render(){
-                            let actions = mapDispatchToProps(store.dispatch);
+                            let actions;
+                            // 判断mapDispatchToProps是不是函数 不是函数就用bindActionCreators转化成对象
+                            if(typeof mapDispatchToProps == 'function'){
+                                actions = mapDispatchToProps(store.dispatch);
+                            }else{
+                                actions = bindActionCreators(mapDispatchToProps,store.dispatch);
+                            }
                             return <Component 
                                 {...this.state}
                                 {...actions}

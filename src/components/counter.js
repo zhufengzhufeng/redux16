@@ -17,10 +17,11 @@ class Counter extends Component{
      </div>)
  }
 }
-export default connect(state => ({ n: state.counter.number }), dispatch=>({
-    add: (count) => dispatch(actions.add(count)),
-    minus: (count) => dispatch(actions.minus(count))
-}))(Counter);
+export default connect(
+    state => {
+        return { n: state.getIn(['counter','number']) }
+    },
+    actions)(Counter);
 
 //export default connect(state => ({ n: state.counter.number }), actions)(Counter);
 

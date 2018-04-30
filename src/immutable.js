@@ -32,13 +32,12 @@ let m1 = fromJS([[1, 2, 3], [4, 5, 6]]);
 console.log(m1.get(0));
 // 可以操作数组 包括数组中push sort
 
-
 // ------------------------
 let { Map, fromJS, List, is } = require('immutable');
 let m1 = fromJS({ a: 1 });
 // 一般情况尽量不要调用toJS
-console.log(m1.toJS().a)
+console.log(m1.toJS().a);
 
 let m3 = fromJS({ a: 1, b: { a: 123 } });
 let m4 = fromJS({ a: 1, b: { a: 123 } });
-console.log(is(m3, m4))
+console.log(is(m3, m4));
